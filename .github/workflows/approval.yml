@@ -25,7 +25,7 @@ jobs:
 
     steps:
     - name: Awaiting approval
-      uses: peter-evans/approve-pull-request@v4
+      uses: teste/approve-pull-request@v4
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         approval-message: "Please approve this commit"
