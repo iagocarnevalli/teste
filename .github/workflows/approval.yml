@@ -24,8 +24,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Awaiting approval
-      uses: teste/git-approve-action@v2.0
+    - name: Manual Workflow Approval
+      uses: trstringer/manual-approval@v1.9.1
+
+            
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         approval-message: "Please approve this commit"
