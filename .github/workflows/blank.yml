@@ -1,0 +1,33 @@
+name: Approval Workflow
+
+on:
+  push:
+    branches:
+      - main  # Especifique o branch que deseja monitorar
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Run tests
+      run: |
+        echo "Running tests..."
+        # Comandos para rodar os testes
+        echo "Tests passed!"
+
+  approval:
+    needs: build  # Este job depende do job 'build' ser concluído
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Awaiting approval
+      uses: peter-evans/approve-pull-request@v4
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        approval-message: "Please approve this commit"
+        reviewers: |
+          iagocarnevalli
